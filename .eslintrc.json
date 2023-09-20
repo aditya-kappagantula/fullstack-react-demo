@@ -20,6 +20,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "ignorePatterns": ["dist/", "node_nodules", "public"],
   "plugins": [
     "react",
     "@typescript-eslint"
