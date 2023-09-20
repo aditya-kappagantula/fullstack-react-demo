@@ -1,7 +1,7 @@
 {
   "name": "energy-service-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "react-typescript-express-webpack-eslint-nodejs fullstack application",
   "main": "index.js",
   "scripts": {
     "build:dev": "tsc --watch --preserveWatchOutput",
