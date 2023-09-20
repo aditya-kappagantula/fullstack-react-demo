@@ -1,37 +1,31 @@
-import express, { Request, Response, NextFunction } from "express";
-import path from "path";
+import express, { Request, Response, NextFunction } from 'express'
+import path from 'path'
 
-const app = express();
+const app = express()
 
-app.use(express.static(path.join(__dirname, "../public")));
+app.use(express.static(path.join(__dirname, '../public')))
 
-app.get("/", (req: Request, res: Response, next: NextFunction): void => {
+app.get('/', (req: Request, res: Response, next: NextFunction): void => {
   try {
-    res.send("index.html");
+    res.send('index.html')
   } catch (error) {
-    next(error);
+    next(error)
   }
-});
+})
 
-app.get("/api/name", (req: Request, res: Response, next: NextFunction): void => {
+app.get('/api/name', (req: Request, res: Response, next: NextFunction): void => {
   try {
-    res.send({value: 'Aditya K'});
+    res.send({ value: 'Aditya K' })
   } catch (error) {
-    next(error);
+    next(error)
   }
-});
+})
 
-const PORT = 3000;
+const PORT = 3000
 
 app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}`);
-});
+  console.log(`App listening on port ${PORT}`)
+})
 
-process.once('SIGUSR2', function () {
-  process.kill(process.pid, 'SIGUSR2');
-});
-
-process.on('SIGINT', function () {
-  process.kill(process.pid, 'SIGINT');
-});
-
+process.once('SIGUSR2', () => process.kill(process.pid, 'SIGUSR2'))
+process.on('SIGINT', () => process.kill(process.pid, 'SIGINT'))
