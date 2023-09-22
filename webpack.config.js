@@ -9,6 +9,16 @@ module.exports = {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/
+      },
+      {
+        test: /\.(css|scss|sass)$/,
+        use: [{
+          loader: 'style-loader'
+        }, {
+          loader: 'css-loader'
+        }, {
+          loader: 'sass-loader'
+        }]
       }
     ]
   },
@@ -26,6 +36,11 @@ module.exports = {
     compress: true,
     port: 9000,
     proxy: {
+      '/': {
+        target: 'http://localhost:9000',
+        router: () => 'http://localhost:3000',
+        logLevel: 'debug'
+      },
       '/api': {
         target: 'http://localhost:9000',
         router: () => 'http://localhost:3000',
