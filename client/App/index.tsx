@@ -1,5 +1,5 @@
 import React from 'react'
-import './styles.scss'
+// import './styles.scss'
 
 const App: React.FC = () => {
   const handleClick = () => {
@@ -11,6 +11,7 @@ const App: React.FC = () => {
   }
   return (
     <div className="body">
+      <img src="/assets/images/logo.png" alt="logo" />
       <h1>TypeScript is awesome!!</h1>
       <div>
         <input type="button" value="Get Name" onClick={handleClick} />
