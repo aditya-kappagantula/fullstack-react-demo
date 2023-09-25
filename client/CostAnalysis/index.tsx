@@ -48,7 +48,7 @@ const CostAnalysis: React.FC<CostAnalysisProps> = ({ batteries, transformer, sel
   const dimensionsLabel = `${width} ${dimensionUnits} X ${height} ${dimensionUnits}`
   const energyLabel = `${energy} ${energyUnits}`
 
-  const transformerCount = Math.ceil(selectedBatteries.length / 2)
+  const transformerCount = (selectedBatteries.length > 0 && Math.ceil(selectedBatteries.length / 2)) || 0
   costTableRows.push({
     name: 'Transformer',
     count: transformerCount,
@@ -98,21 +98,21 @@ const CostAnalysis: React.FC<CostAnalysisProps> = ({ batteries, transformer, sel
             <CardHeader
               avatar={<AttachMoney />}
               title="Total Cost of Installation"
-              subheader="September 14, 2016"
+              subheader={new Date().toDateString()}
             />
             <Typography align="center" variant="h3" gutterBottom>{new Intl.NumberFormat('en-US', { style: 'currency', currency: transformer.currencyUnits, minimumFractionDigits: 0 }).format(overallPrice)}</Typography>
           </Card>
           <Card variant="outlined">
             <CardHeader avatar={<Landscape />}
               title="Total Area Required"
-              subheader="September 14, 2016"
+              subheader={new Date().toDateString()}
             />
             <Typography align="center" variant="h3" gutterBottom>{`${totalArea} Sq.Ft`}</Typography>
           </Card>
           <Card variant="outlined">
             <CardHeader avatar={<ElectricBolt />}
               title="Total Energy Output"
-              subheader="September 14, 2016"
+              subheader={new Date().toDateString()}
             />
             <Typography align="center" variant="h3" gutterBottom>{totalEnergy} {transformer.energyUnits}</Typography>
           </Card>
