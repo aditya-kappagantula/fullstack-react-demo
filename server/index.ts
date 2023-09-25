@@ -25,7 +25,6 @@ const app = express()
 const router = require('express').Router()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(useragent.express())
 
 const getSession = (req: Request, res: Response, next: NextFunction) => {
   const ipAddress = requestIp.getClientIp(req)

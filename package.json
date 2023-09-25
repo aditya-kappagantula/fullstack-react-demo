@@ -31,14 +31,12 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
-    "express-useragent": "^1.0.15",
     "memorystore": "^1.6.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-select": "^5.7.5",
     "request-ip": "^3.3.0",
-    "reset-css": "^5.0.2",
-    "uuid": "^9.0.1"
+    "reset-css": "^5.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.22.20",
