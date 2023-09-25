@@ -1,5 +1,6 @@
 const path = require('path')
 const ESLintPlugin = require('eslint-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: './client/index.tsx',
@@ -11,7 +12,7 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.(css|scss|sass)$/,
+        test: /\.scss$/,
         use: [{
           loader: 'style-loader'
         }, {
@@ -26,6 +27,12 @@ module.exports = {
     new ESLintPlugin({
       extensions: ['ts', 'tsx'],
       failOnError: true
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: 'client/assets', to: path.resolve(__dirname, 'dist/assets') },
+        { from: 'client/assets', to: path.resolve(__dirname, 'public/assets') }
+      ]
     })
   ],
   devServer: {

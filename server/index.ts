@@ -73,7 +73,18 @@ const saveSession = (req: Request, res: Response, next: NextFunction) => {
   next()
 }
 
-app.use(express.static(path.join(__dirname, '../public')))
+app.use(express.static(path.join(__dirname, '../../public')))
+router.get('/', (req: Request, res: Response, next: NextFunction): void => {
+  try {
+    console.log('----')
+    console.log(__dirname)
+    console.log(path.join(__dirname, '../../public/index.html'))
+    console.log('-----')
+    res.sendFile(path.join(__dirname, '../../public/index.html'))
+  } catch (error) {
+    next(error)
+  }
+})
 
 router.get('/api/inventory', (req: Request, res: Response, next: NextFunction): void => {
   try {
