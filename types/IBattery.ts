@@ -1,7 +1,7 @@
 export default interface IBattery {
   name: string,
-  width: string,
-  height: string,
+  width: number,
+  height: number,
   energy: number,
   dimensionUnits: string,
   energyUnits: string,

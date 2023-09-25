@@ -6,7 +6,7 @@ import requestIp from 'request-ip'
 import createMemoryStore from 'memorystore'
 import useragent from 'express-useragent'
 import batteries from './data/batteries'
-import transformers from './data/transformers'
+import transformer from './data/transformer'
 import ISelectOption from '../types/ISelectOption'
 
 const MemoryStore = createMemoryStore(session)
@@ -73,14 +73,12 @@ const saveSession = (req: Request, res: Response, next: NextFunction) => {
   next()
 }
 
-app.use(express.static(path.join(__dirname, '../../public')))
+const ASSET_DIRECTORY = process.env.NODE_ENV === 'production' ? path.join(__dirname, '../../public') : path.join(__dirname, '../public')
+const INDEX_FILE = `${ASSET_DIRECTORY}/index.html`
+app.use(express.static(ASSET_DIRECTORY))
 router.get('/', (req: Request, res: Response, next: NextFunction): void => {
   try {
-    console.log('----')
-    console.log(__dirname)
-    console.log(path.join(__dirname, '../../public/index.html'))
-    console.log('-----')
-    res.sendFile(path.join(__dirname, '../../public/index.html'))
+    res.sendFile(INDEX_FILE)
   } catch (error) {
     next(error)
   }
@@ -90,7 +88,7 @@ router.get('/api/inventory', (req: Request, res: Response, next: NextFunction): 
   try {
     res.send({
       batteries,
-      transformers
+      transformer
     })
   } catch (error) {
     next(error)

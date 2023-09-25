@@ -16,8 +16,7 @@ import CostAnalysis from '../CostAnalysis'
 const App: React.FC = () => {
   const [batteries, setBatteries] = React.useState<IBattery[]>([])
   const [isLoadingData, setIsLoadingData] = React.useState<Boolean>(true)
-  // eslint-disable-next-line no-unused-vars
-  const [transformer, setTransformer] = React.useState<ITransformer>()
+  const [transformer, setTransformer] = React.useState<(ITransformer | {})>({})
   const [selectedBatteries, setSelectedBatteries] = React.useState<(ISelectOption | {})[]>([])
 
   const selectBattery = (event: ISelectOption, index: number) :void => {
@@ -61,7 +60,7 @@ const App: React.FC = () => {
         <div className="row">
           <div className="configuration-container column padding">
             <TitleContainer title="Configuration ">
-              <div className="column grow">
+              <div className="column grow margin">
                 <div className="column">
                   {
                     selectedBatteries.map((selection: any, index: number) => <Battery key={index} index={index} batteries={batteries} selectedBattery={selection} onSelectBattery={selectBattery} onDeleteBattery={deleteBattery} />)
@@ -72,9 +71,10 @@ const App: React.FC = () => {
                 </div>
               </div>
             </TitleContainer>
-            <TitleContainer title="Cost Analysis ">
-              <CostAnalysis cost={100} area={100} transformers={100} />
-            </TitleContainer>
+            { batteries.length > 0 && selectedBatteries.length > 0 &&
+              <TitleContainer title="Cost Analysis ">
+                  <CostAnalysis transformer={transformer as ITransformer} batteries={batteries} selectedBatteries={selectedBatteries as ISelectOption[]} />
+              </TitleContainer>}
           </div>
           <div className="layout">
           </div>
