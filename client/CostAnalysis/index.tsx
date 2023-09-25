@@ -3,7 +3,7 @@ import type IBattery from '../../types/IBattery'
 import type ISelectOption from '../../types/ISelectOption'
 import type ITransformer from '../../types/ITransformer'
 import {
-  Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Card, CardHeader, Chip
+  Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Card, CardHeader, Chip
 } from '@mui/material'
 
 import { AttachMoney, ElectricBolt, Landscape } from '@mui/icons-material'
@@ -62,7 +62,7 @@ const CostAnalysis: React.FC<CostAnalysisProps> = ({ batteries, transformer, sel
 
   return (
     <div className="column grow margin-t">
-        <TableContainer component={Paper}>
+        <TableContainer>
           <Table aria-label="Cost Table">
           <caption>
             Every 2 Batteries in the configuration will need 1 Transformer <span>
@@ -94,7 +94,7 @@ const CostAnalysis: React.FC<CostAnalysisProps> = ({ batteries, transformer, sel
           </Table>
         </TableContainer>
         <div className="row">
-          <Card variant="outlined">
+          <Card className="margin" variant="outlined">
             <CardHeader
               avatar={<AttachMoney />}
               title="Total Cost of Installation"
@@ -102,14 +102,14 @@ const CostAnalysis: React.FC<CostAnalysisProps> = ({ batteries, transformer, sel
             />
             <Typography align="center" variant="h3" gutterBottom>{new Intl.NumberFormat('en-US', { style: 'currency', currency: transformer.currencyUnits, minimumFractionDigits: 0 }).format(overallPrice)}</Typography>
           </Card>
-          <Card variant="outlined">
+          <Card className="margin" variant="outlined">
             <CardHeader avatar={<Landscape />}
               title="Total Area Required"
               subheader={new Date().toDateString()}
             />
             <Typography align="center" variant="h3" gutterBottom>{`${totalArea} Sq.Ft`}</Typography>
           </Card>
-          <Card variant="outlined">
+          <Card className="margin" variant="outlined">
             <CardHeader avatar={<ElectricBolt />}
               title="Total Energy Output"
               subheader={new Date().toDateString()}
