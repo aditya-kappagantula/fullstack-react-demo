@@ -48,7 +48,7 @@ const CostAnalysis: React.FC<CostAnalysisProps> = ({ batteries, transformer, sel
   const dimensionsLabel = `${width} ${dimensionUnits} X ${height} ${dimensionUnits}`
   const energyLabel = `${energy} ${energyUnits}`
 
-  const transformerCount = (selectedBatteries.length > 0 && Math.ceil(selectedBatteries.length / 2)) || 0
+  const transformerCount = Math.ceil((selectedBatteries.filter(x => x.label).length) / 2)
   costTableRows.push({
     name: 'Transformer',
     count: transformerCount,
