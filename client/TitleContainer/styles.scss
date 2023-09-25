@@ -1,0 +1,43 @@
+.title-container {
+  width: 30rem;
+
+  .title {
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+  }
+
+  .content-container {
+    margin-top: -.45rem;
+    .content {
+      border-left: 1px solid;
+      border-right: 1px solid;
+      border-bottom: 1px solid;
+      padding: 1rem 0 0 1rem;
+    }
+  }
+
+  .title:before {
+    background-color: #000;
+    content: "";
+    height: .075rem;
+    position: relative;
+    right: .5rem;
+    margin-top: .5rem;
+    width: 5%;
+  }
+
+  .title:after {
+    background-color: #000;
+    content: "";
+    display: inline-block;
+    height: .075rem;
+    position: relative;
+    left: .5rem;
+    margin-top: .5rem;
+    flex: 1;
+  }
+}
+
+
+

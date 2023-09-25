@@ -1,4 +1,11 @@
-@import 'reset-css';
-.body {
-  background-color: #FF0;
+.app {
+  .configuration-container {
+    min-width: 32rem;
+  }
+  
+  .layout {
+    width: 1000px;
+    height: 1000px;
+    background-color: #F5F5DC;
+  }  
 }

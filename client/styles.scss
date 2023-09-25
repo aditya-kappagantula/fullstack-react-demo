@@ -1,0 +1,117 @@
+@import 'reset-css';
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: inherit;
+  height: inherit;
+}
+
+#app {
+  width: inherit;
+  height: inherit;
+  display: flex;
+}
+
+.app {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.grow {
+  flex: 1;
+}
+
+.center-v {
+  align-items: center;
+}
+
+.center-h {
+  justify-content: center
+}
+
+.flex {
+  display: flex;
+}
+
+.margin {
+  margin: .5rem
+}
+
+.margin-t {
+  margin-top: .5rem
+}
+
+.margin-r {
+  margin-right: .5rem
+}
+
+.margin-b {
+  margin-bottom: .5rem
+}
+
+.margin-l {
+  margin-left: .5rem
+}
+
+.margin-h {
+  margin: 0 .5rem 0 .5rem;
+}
+
+.margin-v {
+  margin: .5rem 0 .5rem 0;
+}
+
+.padding {
+  padding: .5rem
+}
+
+.padding-h {
+  padding: 0 .5rem 0 .5rem;
+}
+
+.padding-v {
+  padding: .5rem 0 .5rem 0;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.full-height {
+  width: 100%;
+}
+
+.align-r {
+  justify-content: flex-end;
+}
+
+.align-c {
+  align-items: center;
+}
+
+.space-a {
+  justify-content: space-around;
+}
+
+.space-b {
+  justify-content: space-between;
+}
+
+.react-select {
+  min-width: 12rem;
+}
+
