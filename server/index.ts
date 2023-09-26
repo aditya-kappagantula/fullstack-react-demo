@@ -19,7 +19,7 @@ declare module 'express-session' {
   }
 }
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 8000
 const app = express()
 const router = require('express').Router()
 app.use(express.json())

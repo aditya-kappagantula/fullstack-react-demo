@@ -45,12 +45,12 @@ module.exports = {
     proxy: {
       '/': {
         target: 'http://localhost:9000',
-        router: () => 'http://localhost:3000',
+        router: () => 'http://localhost:8000',
         logLevel: 'debug'
       },
       '/api': {
         target: 'http://localhost:9000',
-        router: () => 'http://localhost:3000',
+        router: () => 'http://localhost:8000',
         logLevel: 'debug'
       }
     }
