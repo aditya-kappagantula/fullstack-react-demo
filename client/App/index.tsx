@@ -45,7 +45,7 @@ const App: React.FC = () => {
   React.useEffect(() => {
     setIsLoadingData(true)
     getAPI('/api/session').then(result => {
-      setSelectedBatteries(result.selectedBatteries)
+      setSelectedBatteries(result.selectedBatteries ?? [])
       setIsLoadingData(false)
     })
     getAPI('/api/inventory').then(result => {
