@@ -8,7 +8,8 @@ export default [
     energyUnits: 'MWh',
     cost: 120000,
     currencyUnits: 'USD',
-    releaseYear: 2022
+    releaseYear: 2022,
+    color: '#91C4F2'
   },
   {
     name: 'Megapack 2',
@@ -19,7 +20,8 @@ export default [
     energyUnits: 'MWh',
     cost: 80000,
     currencyUnits: 'USD',
-    releaseYear: 2021
+    releaseYear: 2021,
+    color: '#9D79BC'
   },
   {
     name: 'Megapack',
@@ -30,7 +32,8 @@ export default [
     energyUnits: 'MWh',
     cost: 50000,
     currencyUnits: 'USD',
-    releaseYear: 2005
+    releaseYear: 2005,
+    color: '#FFE19C'
   },
   {
     name: 'Powerpack',
@@ -41,6 +44,7 @@ export default [
     energyUnits: 'MWh',
     cost: 10000,
     currencyUnits: 'USD',
-    releaseYear: 2000
+    releaseYear: 2000,
+    color: '#EDFFD9'
   }
 ]

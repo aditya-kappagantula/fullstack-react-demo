@@ -30,7 +30,6 @@ module.exports = {
     }),
     new CopyPlugin({
       patterns: [
-        // { from: 'client/assets', to: path.resolve(__dirname, 'dist/assets') },
         { from: 'client/assets', to: path.resolve(__dirname, 'public/assets') }
       ]
     })
@@ -44,13 +43,13 @@ module.exports = {
     port: 9000,
     proxy: {
       '/': {
-        target: 'http://localhost:9000',
-        router: () => 'http://localhost:8000',
+        target: `http://localhost:${process.env.DEV_SERVER_PORT || 9000}`,
+        router: () => `http://localhost:${process.env.PORT || 8000}`,
         logLevel: 'debug'
       },
       '/api': {
-        target: 'http://localhost:9000',
-        router: () => 'http://localhost:8000',
+        target: `http://localhost:${process.env.DEV_SERVER_PORT || 9000}`,
+        router: () => `http://localhost:${process.env.PORT || 8000}`,
         logLevel: 'debug'
       }
     }

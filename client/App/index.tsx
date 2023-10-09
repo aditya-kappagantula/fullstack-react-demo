@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../Header'
 import TitleContainer from '../TitleContainer'
+import BatteryLayout from '../BatteryLayout'
 import type IBattery from '../../types/IBattery'
 import type ISelectOption from '../../types/ISelectOption'
 import type ITransformer from '../../types/ITransformer'
@@ -16,8 +17,8 @@ import CostAnalysis from '../CostAnalysis'
 const App: React.FC = () => {
   const [batteries, setBatteries] = React.useState<IBattery[]>([])
   const [isLoadingData, setIsLoadingData] = React.useState<Boolean>(true)
-  const [transformer, setTransformer] = React.useState<(ITransformer | {})>({})
-  const [selectedBatteries, setSelectedBatteries] = React.useState<(ISelectOption | {})[]>([])
+  const [transformer, setTransformer] = React.useState<(ITransformer)>()
+  const [selectedBatteries, setSelectedBatteries] = React.useState<(ISelectOption)[]>([])
 
   const selectBattery = (event: ISelectOption, index: number) :void => {
     setSelectedBatteries(items => items.map((item, itemIndex) => {
@@ -44,13 +45,16 @@ const App: React.FC = () => {
 
   React.useEffect(() => {
     setIsLoadingData(true)
-    getAPI('/api/session').then(result => {
-      setSelectedBatteries(result.selectedBatteries ?? [])
+    Promise.all([
+      getAPI('/api/session').then(result => {
+        setSelectedBatteries(result.selectedBatteries ?? [])
+      }),
+      getAPI('/api/inventory').then(result => {
+        setBatteries(result.batteries)
+        setTransformer(result.transformer)
+      })
+    ]).then(() => {
       setIsLoadingData(false)
-    })
-    getAPI('/api/inventory').then(result => {
-      setBatteries(result.batteries)
-      setTransformer(result.transformer)
     })
   }, [])
   return (
@@ -71,13 +75,18 @@ const App: React.FC = () => {
                 </div>
               </div>
             </TitleContainer>
-            { batteries.length > 0 && selectedBatteries.length > 0 &&
-              <TitleContainer title="Cost Analysis ">
-                  <CostAnalysis transformer={transformer as ITransformer} batteries={batteries} selectedBatteries={selectedBatteries as ISelectOption[]} />
-              </TitleContainer>}
+            <TitleContainer title="Cost Analysis">
+              { batteries.length > 0 && selectedBatteries.length > 0 &&
+              <CostAnalysis transformer={transformer as ITransformer} batteries={batteries} selectedBatteries={selectedBatteries as ISelectOption[]} />}
+              { selectedBatteries.length === 0 && <span className="margin padding">Add batteries to configuration to view detailed cost analysis.</span>}
+            </TitleContainer>
           </div>
-          <div className="layout">
-          </div>
+          {!isLoadingData && selectedBatteries.length > 0 &&
+            <div className="padding-r padding-t">
+              <TitleContainer className="padding" title="Battery Alignment">
+                <BatteryLayout batteries={batteries} transformer={transformer as ITransformer} selectedBatteries={selectedBatteries} />
+              </TitleContainer>
+            </div>}
         </div>
       }
       {

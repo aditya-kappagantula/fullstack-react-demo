@@ -65,10 +65,10 @@ const CostAnalysis: React.FC<CostAnalysisProps> = ({ batteries, transformer, sel
         <TableContainer>
           <Table aria-label="Cost Table">
           <caption>
-            Every 2 Batteries in the configuration will need 1 Transformer <span>
-        <Chip className="margin-h" label={pricingLabel} variant="outlined" />
-        <Chip className="margin-h" label={dimensionsLabel} variant="outlined" />
-        <Chip className="margin-h" label={energyLabel} variant="outlined" /></span>. It is added automatically to the pricing.
+            Every 2 Batteries in the configuration will need 1 Transformer that costs <span>
+            <span><Chip className="margin-h" label={pricingLabel} variant="outlined" />, occupies </span>
+            <span><Chip className="margin-h" label={dimensionsLabel} variant="outlined" /> and consumes </span>
+            <Chip className="margin-h" label={energyLabel} variant="outlined" /></span>. Required transformers are added automatically to the pricing.
           </caption>
             <TableHead>
               <TableRow>

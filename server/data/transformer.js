@@ -7,7 +7,8 @@ const transformer = {
   energyUnits: 'MWh',
   cost: 10000,
   currencyUnits: 'USD',
-  releaseYear: ''
+  releaseYear: '',
+  color: '#DDDDDD'
 }
 
 export default transformer

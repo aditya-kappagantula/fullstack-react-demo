@@ -2,10 +2,12 @@
   .configuration-container {
     min-width: 32rem;
   }
-  
-  .layout {
-    width: 1000px;
-    height: 1000px;
-    // background-color: #F5F5DC;
-  }  
+
+  .grid-container {
+    display: grid;
+    max-width: 1000px;
+    grid-template-columns: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
+    grid-template-rows: 50px;
+    grid-auto-flow: row;
+  }
 }

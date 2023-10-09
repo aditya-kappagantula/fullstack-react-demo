@@ -7,5 +7,6 @@ export default interface ITransformer {
   energyUnits: string,
   cost: number,
   currencyUnits: string,
-  releaseYear: number | string
+  releaseYear: number | string,
+  color: string
 }
